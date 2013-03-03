@@ -34,6 +34,9 @@
 - ``` node follow.js ``` する
 
 ## 備考
+### Twitterアイコン
+- [フリー素材](http://www.material-land.com/view__1769__0.html)を利用しています
+
 ### Twitter APIのkey,secretはリポジトリに登録してない
 
 - key,secretはJSONファイルに外だしして、.gitignoreでgitの管理外にする

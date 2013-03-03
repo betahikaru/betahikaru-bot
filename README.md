@@ -30,6 +30,7 @@
 }
 ```
 - ```sudo npm install``` する
+- follow.jsを使う場合は、変数```BOT_SCREEN_NAME```に自分のTwitterアカウントのscreen_nameを設定する。
 - ``` node follow.js ``` する
 
 ## 備考

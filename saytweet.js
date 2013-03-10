@@ -30,7 +30,7 @@ bot.stream('user', function(stream) {
 			|| !('user' in data)
 			|| !('screen_name' in data.user)
 			) {
-			console.error('[ERROR] invalid data');
+			console.log('[WARN] invalid data');
 			console.log('data:\r\n' + data);
 			return;
 		}

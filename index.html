@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Betahikaru-bot by betahikaru</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Betahikaru-bot</h1>
+        <p>Twitterボットの習作です。 たまに @betahikaru_dev で稼働中。</p>
+
+        <p class="view"><a href="https://github.com/betahikaru/betahikaru-bot">View the Project on GitHub <small>betahikaru/betahikaru-bot</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/betahikaru/betahikaru-bot/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/betahikaru/betahikaru-bot/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/betahikaru/betahikaru-bot">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>@betahikaru-bot</h1>
+
+<h2>@betahikaru-botとは</h2>
+
+<ul>
+<li>Twitterボットの習作。</li>
+<li>Node.jsのnode-twitterモジュールを使って実現している。</li>
+</ul><h2>開発中の機能</h2>
+
+<ul>
+<li>単語に反応してフォロー、リムーブ</li>
+<li>//おうむ返し（リプライが来たらそのまま返す）</li>
+<li>//単語に反応してツイート（ホームラインを監視して登録用語がきたらツイート）</li>
+<li>タイムラインの読み上げ ※ボットではありません。saykana,<a href="http://qiita.com/items/8d2867fb39624e1fa48a">MeCab</a>前提</li>
+</ul><h2>前提</h2>
+
+<ul>
+<li>Twitter APIでアプリケーションを登録していること
+
+<ul>
+<li>consumer_keyとかが必要なので。</li>
+</ul>
+</li>
+</ul><h2>使い方</h2>
+
+<ul>
+<li>
+<code>git clone</code>する</li>
+<li>twitterAccount.jsonファイルを作る。
+
+<ul>
+<li>ファイル名は適時変更可能。ただし、jsで読み込む所も修正すること。</li>
+</ul>
+</li>
+</ul><pre lang="json:twitterAccount.json"><code>{
+    "consumer_key"          : "ここにアカウントの情報を入力",
+    "consumer_secret"       : "同上",
+    "access_token_key"      : "同上",
+    "access_token_secret"   : "同上"
+}
+</code></pre>
+
+<ul>
+<li>
+<code>sudo npm install</code> する</li>
+</ul><h3>フォロー＆リムーブを行うボット</h3>
+
+<ul>
+<li>follow.jsを編集
+
+<ul>
+<li>変数<code>BOT_SCREEN_NAME</code>に自分のTwitterアカウントのscreen_nameを設定する。</li>
+<li>s</li>
+</ul>
+</li>
+<li>
+<code>node follow.js</code> を実行する</li>
+</ul><h3>タイムラインの読み上げを行うプログラム</h3>
+
+<ul>
+<li>ボットではありません。</li>
+<li>saytweet.jsを編集
+
+<ul>
+<li>変数<code>BOT_SCREEN_NAME</code>に自分のTwitterアカウントのscreen_nameを設定する。</li>
+</ul>
+</li>
+<li>
+<code>node saytweet.js</code> を実行する </li>
+</ul><h2>備考</h2>
+
+<h3>Twitterアイコン</h3>
+
+<ul>
+<li>
+<a href="http://www.material-land.com/view__1769__0.html">フリー素材</a>を利用しています</li>
+</ul><h3>Twitter APIのkey,secretはリポジトリに登録してない</h3>
+
+<ul>
+<li>key,secretはJSONファイルに外だしして、.gitignoreでgitの管理外にする</li>
+<li>外だししたJSONファイルを読み込む</li>
+</ul><pre lang="javascript:twitterAccount.json"><code>var twitter = require('twitter'),
+    fs = require('fs');
+
+var keyandsecrets = JSON.parse(fs.readFileSync(__dirname + '/twitterAccount.json'));
+var bot = new twitter(keyandsecrets);
+</code></pre>
+
+<h2>参考サイト</h2>
+
+<ol>
+<li><a href="https://dev.twitter.com/docs/api/1.1">Twitter - REST API v1.1 Resources</a></li>
+<li><a href="http://t.co/s388QaU6tT">Node.jsで作るTwitterボット制作</a></li>
+</ol><p>以上</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/betahikaru">betahikaru</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>

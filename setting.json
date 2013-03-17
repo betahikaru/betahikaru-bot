@@ -1,0 +1,9 @@
+{
+	"twitter" : {
+		"accounts" : {
+			"name": "betahikaru",
+			"secretkey_path": "/secretkey/twitterAccountBetahikaru.json"
+		}
+		
+	}
+}

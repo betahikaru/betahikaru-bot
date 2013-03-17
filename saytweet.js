@@ -5,9 +5,23 @@ var util = require('util')
 ,	exec = require('child_process').exec
 	;
 
+var FILE_PATH_SETTING = '/setting.json';
+
+var setting;
+var account;
 var keyandsecrets;
 try {
-	keyandsecrets = JSON.parse(fs.readFileSync(__dirname + '/twitterAccountBetahikaru.json'));
+	setting = JSON.parse(fs.readFileSync(__dirname + FILE_PATH_SETTING));
+
+	if (setting.twitter && setting.twitter.account) {
+		account = setting.twitter.account;
+	} else {
+		console.error('[Error] setting file validation error (path=' + FILE_PATH_SETTING + ')');
+		console.error('[Error] object what we want is "setting.twitter.account"');
+		return;
+	}
+
+	keyandsecrets = JSON.parse(fs.readFileSync(__dirname + account.secretkey_path));
 } catch (ex) {
 	console.error(ex);
 	throw ex;
@@ -15,7 +29,7 @@ try {
 
 var bot = new twitter(keyandsecrets);
 
-var BOT_SCREEN_NAME = 'betahikaru';
+var BOT_SCREEN_NAME = account.name;
 
 // キャッチされない例外があった場合の救済措置
 process.on('uncaughtException', function(err) {
